@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>16x16 Grid</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(16, 40px);
+            grid-template-rows: repeat(16, 40px);
+        }
+
+        .box {
+            width: 40px;
+            height: 40px;
+            background-color: rgb(92, 92, 92);
+            border: 2px solid white;
+            cursor: pointer;
+        }
+
+        .active {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+
+<div class="grid" id="grid"></div>
+
+<script>
+    const gridContainer = document.getElementById('grid');
+
+    // Create the grid (16x16 = 256 cells)
+    for (let i = 0; i < 256; i++) {
+        const box = document.createElement('div');
+        box.className = 'box';
+        gridContainer.appendChild(box);
+    }
+
+    const boxes = document.querySelectorAll('.box');
+
+    // Highlight cells in the 7th row
+    const startRowIndex = 7 * 16; // Start of the 7th row
+    for (let i = startRowIndex + 1; i < startRowIndex + 5; i++) {
+        boxes[i].style.backgroundColor = 'lightblue';
+    }
+
+    // Highlight cells in the 8th row
+    const startBottomRowIndex = 8 * 16; // Start of the 8th row
+    for (let i = startBottomRowIndex + 4; i < startBottomRowIndex + 10; i++) {
+        boxes[i].style.backgroundColor = 'lightblue';
+    }
+
+    // Highlight specific cell
+    const specificIndex = startBottomRowIndex + 12; // Specific cell in the 8th row
+    boxes[specificIndex].style.backgroundColor = 'lightblue';
+</script>
+
+</body>
+</html>
